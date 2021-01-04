@@ -1,4 +1,4 @@
-let addFunction = function(event){
+let addFunction = function(event) {
     console.log(event);
     let text = document.getElementById("input").value;
     let liNode = document.createElement("li");
@@ -6,37 +6,50 @@ let addFunction = function(event){
     liNode.appendChild(textNode);
     document.getElementById("list").appendChild(liNode);
     document.getElementById("input").value = "";
-    
-//create a delete button option as the li item is created//
+
+    //create a delete button option as the li item is created//
     let deleteBtnNode = document.createElement("button");
     deleteBtnNode.innerHTML = "Delete";
     deleteBtnNode.addEventListener("click", deleteFunction);
     liNode.appendChild(deleteBtnNode);
-//create a complete button option as il item is created//
+    //create a complete button option as il item is created//
     let completeBtnNode = document.createElement("button");
     completeBtnNode.innerHTML = "Complete";
+    completeBtnNode.addEventListener("click", completeUndoFunction);
+    //completeBtnNode.addEventListener("click", undoFunction);
+
     liNode.appendChild(completeBtnNode);
 
-    alert ("This addFunction function works!");
 };
 
-let deleteFunction = function(event){
-    console.log(event.target.parentNode);
+let deleteFunction = function(event) {
+    //console.log(event.target.parentNode);
     event.target.parentNode.remove();
-    //console.log(this.parentNode);
-   // console.log(this);
-    //let deleteBtn = document.getElementsByTagName("button").this;
-    //deleteBtn.remove();
-    
+
 }
+let completeUndoFunction = function(event) {
+    if (event.target.innerHTML === "Complete") {
+        event.target.parentNode.style.textDecorationLine = "line-through";
+        let undoBtn = event.target;
+        undoBtn.innerHTML = "Undo";
+        undoBtn.addEventListener("click", completeUndoFunction);
+        return;
+    };
 
-//let completeFunction = function(){
-    //console.log("Task Completed");
-  //  document.getElementsByTagName.button.this.parentNode.style.textDecorationLine = "line-through";
-//}
+    if (event.target.innerHTML === "Undo") {
+        event.target.parentNode.style.textDecorationLine = "none";
+        let completeBtn = event.target;
+        event.target.innerHTML = "Complete";
+        completeBtn.addEventListener("click", completeUndoFunction);
+        return;
+
+    }
 
 
-console.log("Hello! your html and scripts are linked!");
+
+};
+
+
+
 
 document.getElementById("add").addEventListener("click", addFunction);
-
