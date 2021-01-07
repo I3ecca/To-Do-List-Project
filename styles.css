@@ -2,4 +2,18 @@
 /*testing to see if css linked*/
 body {
     background-color:lightgray;
+    width: 50vmax;
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+}
+
+h1 , p, li{
+    color: midnightblue;
+    font-weight: bold;
+    
+}
+
+li button{
+    text-align: center;
+    margin-right: 2vw;
 }
