@@ -1,5 +1,4 @@
 let addFunction = function(event) {
-    console.log(event);
     let text = document.getElementById("input").value;
     let liNode = document.createElement("li");
     let textNode = document.createTextNode(text);
@@ -23,7 +22,6 @@ let addFunction = function(event) {
 };
 
 let deleteFunction = function(event) {
-    //console.log(event.target.parentNode);
     event.target.parentNode.remove();
 
 }
@@ -52,4 +50,6 @@ let completeUndoFunction = function(event) {
 
 
 
+
 document.getElementById("add").addEventListener("click", addFunction);
+
